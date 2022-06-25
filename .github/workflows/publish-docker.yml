@@ -24,6 +24,9 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: checkout because the image demands it
+        uses: actions/checkout@v2
+
       - name: Get Docker Metadata
         id: meta_debian
         uses: docker/metadata-action@v3
@@ -38,6 +41,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           file: Dockerfile
+          context: .
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ steps.meta_debian.outputs.tags }}
@@ -57,6 +61,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           file: Dockerfile.alpine
+          context: .
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ steps.meta_alpine.outputs.tags }}
