@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 env:
-  DOCKER_TAG_IMAGE: "ghcr.io/${GITHUB_REPOSITORY}"
+  DOCKER_TAG_IMAGE: "ghcr.io/${{ env.GITHUB_REPOSITORY }}"
 
 jobs:
   build:
