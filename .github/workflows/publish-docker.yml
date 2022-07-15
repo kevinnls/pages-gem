@@ -71,7 +71,7 @@ jobs:
         with:
           images: ${{ env.DOCKER_TAG_IMAGE }}
           tags: |
-            type=sha
+            type=sha,alpine
           flavor: |
             latest=true
             suffix=-alpine,onlatest=true
